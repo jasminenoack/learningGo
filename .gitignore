@@ -5,3 +5,4 @@ src/golang*
 src/gopkg*
 src/honnef*
 !*.go
+.DS_Store
