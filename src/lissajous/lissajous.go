@@ -1,4 +1,5 @@
-package main
+// Package lissajous change package from main to allow to import
+package lissajous
 
 import (
 	"image"
@@ -20,14 +21,13 @@ const (
 
 func main() {
 	// makes random numbers more random
-	rand.Seed(time.Now().UTC().UnixNano())
-	// lissajous(os.Stdout)
-	// lissajous2(os.Stdout)
-	// lissajous3(os.Stdout)
-	lissajous4(os.Stdout)
-	// colorGifs(os.Stdout)
-	// checkerboardMoving(os.Stdout)
-	// checkerboardChanging(os.Stdout)
+	// Lissajous(os.Stdout)
+	// Lissajous2(os.Stdout)
+	// Lissajous3(os.Stdout)
+	Lissajous4(os.Stdout)
+	// ColorGifs(os.Stdout)
+	// CheckerboardMoving(os.Stdout)
+	// CheckerboardChanging(os.Stdout)
 }
 
 func stepColor(color string, goingUp bool, value uint8) {
@@ -46,7 +46,7 @@ func randomShuffledIndexes() []uint8 {
 	return a
 }
 
-func checkerboardChanging(out io.Writer) {
+func CheckerboardChanging(out io.Writer) {
 	frames := 255
 	delay := 25
 	offset := 0
@@ -80,7 +80,7 @@ func checkerboardChanging(out io.Writer) {
 	gif.EncodeAll(out, &anim)
 }
 
-func checkerboardMoving(out io.Writer) {
+func CheckerboardMoving(out io.Writer) {
 	frames := 255
 	delay := 1
 	offset := 0
@@ -113,7 +113,8 @@ func checkerboardMoving(out io.Writer) {
 	gif.EncodeAll(out, &anim)
 }
 
-func lissajous(out io.Writer) {
+func Lissajous(out io.Writer) {
+	rand.Seed(time.Now().UTC().UnixNano())
 	const (
 		cycles  = 5
 		res     = 0.0001
@@ -139,7 +140,8 @@ func lissajous(out io.Writer) {
 	gif.EncodeAll(out, &anim)
 }
 
-func lissajous2(out io.Writer) {
+func Lissajous2(out io.Writer) {
+	rand.Seed(time.Now().UTC().UnixNano())
 	const (
 		cycles  = 5
 		res     = 0.0001
@@ -166,7 +168,8 @@ func lissajous2(out io.Writer) {
 	gif.EncodeAll(out, &anim)
 }
 
-func lissajous3(out io.Writer) {
+func Lissajous3(out io.Writer) {
+	rand.Seed(time.Now().UTC().UnixNano())
 	const (
 		cycles  = 5
 		res     = 0.0001
@@ -199,7 +202,8 @@ func lissajous3(out io.Writer) {
 	gif.EncodeAll(out, &anim)
 }
 
-func lissajous4(out io.Writer) {
+func Lissajous4(out io.Writer) {
+	rand.Seed(time.Now().UTC().UnixNano())
 	const (
 		cycles  = 5
 		res     = 0.0001
@@ -247,7 +251,7 @@ func (c *Circle) Brightness(x, y float64) uint8 {
 	return 255
 }
 
-func colorGifs(out io.Writer) {
+func ColorGifs(out io.Writer) {
 	w, h := 240, 240
 	var hw, hh float64 = float64(w / 2), float64(h / 2)
 	circles := []*Circle{&Circle{}, &Circle{}, &Circle{}}
